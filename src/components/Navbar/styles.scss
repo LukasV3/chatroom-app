@@ -31,12 +31,14 @@
     @include breakpoint(sm) {
       position: absolute;
       width: 100%;
-      top: -150%;
+      top: 5rem;
       left: 0;
       display: flex;
       flex-direction: column;
       text-align: center;
-      z-index: -10;
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.2s ease;
     }
 
     &--icon {
@@ -66,11 +68,12 @@
     }
 
     &:hover {
-      background-color: #fff;
+      text-decoration: underline;
     }
   }
 }
 
-.active {
-  top: 5rem;
+.links--active {
+  transform: scaleY(1);
+  transition: transform 0.5s ease;
 }

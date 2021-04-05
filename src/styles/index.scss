@@ -1,2 +1,16 @@
 @import "./global/index";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+.btn {
+  border-radius: 5px;
+  cursor: pointer;
+  color: #000;
+}
+
+.btn--primary {
+  background-color: rgb(95, 167, 255);
+}
+
+.btn--secondary {
+  background-color: #fff;
+}

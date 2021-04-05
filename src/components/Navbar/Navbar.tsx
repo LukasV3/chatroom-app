@@ -18,7 +18,7 @@ const Navbar = () => {
           {clicked ? <i className="fas fa-times"></i> : <i className="fas fa-bars"></i>}
         </div>
 
-        <ul className={clicked ? "navbar__links active" : "navbar__links"}>
+        <ul className={clicked ? "navbar__links links--active" : "navbar__links"}>
           <li className="navbar__item">
             <Link to="/login" className="navbar__link">
               Login
@@ -26,7 +26,7 @@ const Navbar = () => {
           </li>
           <li className="navbar__item">
             <Link to="/signup" className="navbar__link">
-              SignUp
+              Sign Up
             </Link>
           </li>
         </ul>

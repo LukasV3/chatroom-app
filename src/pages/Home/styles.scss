@@ -1,0 +1,39 @@
+.home {
+  padding: 0 2.5rem;
+  display: flex;
+  justify-content: center;
+  padding: 10rem 1rem;
+
+  &__content {
+    max-width: 80rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__description {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 2.5rem;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    & a {
+      padding: 0.75rem 3.25rem;
+      text-decoration: none;
+      margin: 0.25rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
