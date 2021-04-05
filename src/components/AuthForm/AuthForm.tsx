@@ -9,7 +9,9 @@ interface Props {
 const AuthForm = ({ type }: Props) => {
   return (
     <div className="authform">
-      <h1 className="authform__title">{type} to Chatroom</h1>
+      <h1 className="authform__title">
+        {type} to Chatroom <i className="fab fa-rocketchat"></i>
+      </h1>
       <h3 className="authform__description">
         Fill in the form below to {type === "Login" ? "login to your " : "create an "}
         account.
