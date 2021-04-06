@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 
 interface Props {
   type: "Login" | "Sign Up";
+  onSubmit: ({ email, password }: { email: string; password: string }) => {};
 }
 
-const AuthForm = ({ type }: Props) => {
+const AuthForm = ({ type, onSubmit }: Props) => {
   const [formValues, setFormValues] = useState({ email: "", password: "" });
-  // const [errors, setErrors] = useState({});
+  const [error, setErrors] = useState(null);
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormValues({
@@ -17,9 +18,15 @@ const AuthForm = ({ type }: Props) => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setErrors(null);
     console.log(`formValues`, formValues);
+    try {
+      await onSubmit(formValues);
+    } catch (error) {
+      setErrors(error.message);
+    }
   };
 
   return (
@@ -37,14 +44,17 @@ const AuthForm = ({ type }: Props) => {
           autoFocus
           placeholder="Email"
           className="authform__form--email"
+          value={formValues.email}
           onChange={onInputChange}
         />
         <input
           type="password"
           placeholder="Password"
           className="authform__form--password"
+          value={formValues.password}
           onChange={onInputChange}
         />
+        {error ? <p>{error}</p> : null}
         <button className="btn btn--primary authform__form--btn">{type}</button>
       </form>
 

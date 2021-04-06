@@ -9,6 +9,12 @@ import SignUp from "./pages/SignUp/SignUp";
 import Chat from "./pages/Chat/Chat";
 import { auth } from "./services/firebase";
 
+type routeProps = {
+  component: React.ComponentType<any>;
+  authenticated: boolean;
+  path: string;
+};
+
 const PrivateRoute = ({ component: Component, authenticated, ...rest }: routeProps) => {
   return (
     <Route
@@ -36,12 +42,6 @@ const PublicRoute = ({ component: Component, authenticated, ...rest }: routeProp
 };
 
 // APP COMPONENT  ///////////////////////////////
-
-type routeProps = {
-  component: React.ComponentType<any>;
-  authenticated: boolean;
-  path: string;
-};
 
 const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
