@@ -5,14 +5,20 @@ import Navbar from "../../components/Navbar/Navbar";
 
 import { auth, db } from "../../services/firebase";
 
+type ChatTypes = {
+  timestamp: string;
+  content: string;
+  uid: string;
+};
+
 const Chat = () => {
   const [user] = useState(auth().currentUser);
   const [content, setContent] = useState("");
-  const [chats, setChats] = useState<{ timestamp: string; content: string }[]>([]);
+  const [chats, setChats] = useState<ChatTypes[]>([]);
 
   useEffect(() => {
     db.ref("chats").on("value", (snapshot) => {
-      let chats: { content: string; timestamp: string }[] = [];
+      let chats: ChatTypes[] = [];
       snapshot.forEach((snap) => {
         chats.push(snap.val());
       });
@@ -22,16 +28,12 @@ const Chat = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      await db.ref("chats").push({
-        content: content,
-        timestamp: Date.now(),
-        uid: user?.uid,
-      });
-      setContent("");
-    } catch (error) {
-      // this.setState({ writeError: error.message });
-    }
+    await db.ref("chats").push({
+      content: content,
+      timestamp: Date.now(),
+      uid: user?.uid,
+    });
+    setContent("");
   };
 
   return (
@@ -43,8 +45,11 @@ const Chat = () => {
         })}
       </div>
       <form onSubmit={handleSubmit}>
-        <input onChange={(e) => setContent(e.target.value)} value={content}></input>
-        {/* {this.state.error ? <p>{this.state.writeError}</p> : null} */}
+        <input
+          onChange={(e) => setContent(e.target.value)}
+          value={content}
+          autoFocus
+        ></input>
         <button>Post</button>
       </form>
       <div>
