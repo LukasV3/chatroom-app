@@ -9,7 +9,7 @@ import { signup } from "../../helpers/auth";
 const SignUp = () => {
   return (
     <>
-      <Navbar />
+      <Navbar authenticated={false} />
       <AuthForm type="Sign Up" onSubmit={signup} />
     </>
   );

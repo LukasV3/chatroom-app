@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <>
-      <Navbar />
+      <Navbar authenticated={false} />
       <section className="home">
         <div className="home__content">
           <h1 className="home__title">

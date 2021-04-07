@@ -44,7 +44,7 @@ const Chat = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar authenticated={true} />
       {isLoading ? (
         <LoadingSpinner />
       ) : (

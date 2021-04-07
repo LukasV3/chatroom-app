@@ -9,7 +9,7 @@ import { login } from "../../helpers/auth";
 const Login = () => {
   return (
     <>
-      <Navbar />
+      <Navbar authenticated={false} />
       <AuthForm type="Login" onSubmit={login} />
     </>
   );
