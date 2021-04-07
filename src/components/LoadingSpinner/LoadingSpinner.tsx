@@ -7,9 +7,15 @@ type Props = {
   parentStyles?: {};
 };
 
+const defaultParentStyles = {
+  height: "80vh",
+  display: "grid",
+  placeItems: "center",
+};
+
 const LoadingSpinner = ({ scale, color, parentStyles }: Props) => {
   return (
-    <div style={parentStyles}>
+    <div style={{ ...defaultParentStyles, ...parentStyles }}>
       <div className="lds-default" style={{ transform: `scale(${scale})` }}>
         <div style={{ background: `${color}` }}></div>
         <div style={{ background: `${color}` }}></div>

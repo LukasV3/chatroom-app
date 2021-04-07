@@ -61,15 +61,7 @@ const App = () => {
   });
 
   return isLoading ? (
-    <LoadingSpinner
-      scale={1.4}
-      color="#000"
-      parentStyles={{
-        height: "100vh",
-        display: "grid",
-        placeItems: "center",
-      }}
-    />
+    <LoadingSpinner />
   ) : (
     <Router history={history}>
       <Switch>

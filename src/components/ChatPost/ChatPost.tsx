@@ -20,7 +20,7 @@ const ChatPost = ({ content, createdAt, createdBy }: Props) => {
     <div className="chat-post">
       <div className="chat-post__content">
         <div className="chat-post__img">
-          <p>L</p>
+          <p>{createdBy[0].toUpperCase()}</p>
         </div>
         <h3 className="chat-post__title">
           {createdBy} <span>{renderCreatedAt(createdAt)}</span>
