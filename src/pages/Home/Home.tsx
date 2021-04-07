@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div className="home">
+      <section className="home">
         <div className="home__content">
           <h1 className="home__title">
             Welcome to Chatroom <i className="fab fa-rocketchat"></i>
@@ -27,7 +27,7 @@ const Home = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };

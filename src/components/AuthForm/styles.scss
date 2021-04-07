@@ -1,12 +1,10 @@
 .authform {
-  padding: 10rem 1rem;
-  margin: 0 auto;
-  max-width: 80rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
   &__title {
     font-size: 3rem;

@@ -4,17 +4,25 @@ import { Link } from "react-router-dom";
 
 interface Props {
   type: "Login" | "Sign Up";
-  onSubmit: ({ email, password }: { email: string; password: string }) => {};
+  onSubmit: ({
+    name,
+    email,
+    password,
+  }: {
+    name?: string;
+    email: string;
+    password: string;
+  }) => {};
 }
 
 const AuthForm = ({ type, onSubmit }: Props) => {
-  const [formValues, setFormValues] = useState({ email: "", password: "" });
+  const [formValues, setFormValues] = useState({ name: "", email: "", password: "" });
   const [error, setErrors] = useState(null);
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormValues({
       ...formValues,
-      [e.target.type]: e.target.value,
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -30,40 +38,55 @@ const AuthForm = ({ type, onSubmit }: Props) => {
   };
 
   return (
-    <div className="authform">
-      <h1 className="authform__title">
-        {type} to Chatroom <i className="fab fa-rocketchat"></i>
-      </h1>
-      <h3 className="authform__description">
-        Fill in the form below to {type === "Login" ? "login to your " : "create an "}
-        account.
-      </h3>
-      <form onSubmit={handleSubmit} className="authform__form">
-        <input
-          type="email"
-          autoFocus
-          placeholder="Email"
-          className="authform__form--email"
-          value={formValues.email}
-          onChange={onInputChange}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          className="authform__form--password"
-          value={formValues.password}
-          onChange={onInputChange}
-        />
-        {error ? <p>{error}</p> : null}
-        <button className="btn btn--primary authform__form--btn">{type}</button>
-      </form>
+    <section className="authform">
+      <div className="authform__content">
+        <h1 className="authform__title">
+          {type} to Chatroom <i className="fab fa-rocketchat"></i>
+        </h1>
+        <h3 className="authform__description">
+          Fill in the form below to {type === "Login" ? "login to your " : "create an "}
+          account.
+        </h3>
+        <form onSubmit={handleSubmit} className="authform__form">
+          {type === "Sign Up" && (
+            <input
+              type="text"
+              name="name"
+              autoFocus
+              placeholder="Name"
+              className="authform__form--name"
+              value={formValues.name}
+              onChange={onInputChange}
+            />
+          )}
 
-      {type === "Login" ? (
-        <Link to="/signup">Don't have an account?</Link>
-      ) : (
-        <Link to="/login">Already have an account?</Link>
-      )}
-    </div>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            className="authform__form--email"
+            value={formValues.email}
+            onChange={onInputChange}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            className="authform__form--password"
+            value={formValues.password}
+            onChange={onInputChange}
+          />
+          {error ? <p>{error}</p> : null}
+          <button className="btn btn--primary authform__form--btn">{type}</button>
+        </form>
+
+        {type === "Login" ? (
+          <Link to="/signup">Don't have an account?</Link>
+        ) : (
+          <Link to="/login">Already have an account?</Link>
+        )}
+      </div>
+    </section>
   );
 };
 

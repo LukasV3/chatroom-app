@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./styles.scss";
-
-import Navbar from "../../components/Navbar/Navbar";
-
 import { auth, db } from "../../services/firebase";
 
+import Navbar from "../../components/Navbar/Navbar";
+import ChatPost from "../../components/ChatPost/ChatPost";
+
 type ChatTypes = {
-  timestamp: string;
+  createdAt: string;
   content: string;
   uid: string;
+  createdBy: string;
 };
 
 const Chat = () => {
@@ -30,7 +31,8 @@ const Chat = () => {
     e.preventDefault();
     await db.ref("chats").push({
       content: content,
-      timestamp: Date.now(),
+      createdAt: Date.now(),
+      createdBy: user?.displayName,
       uid: user?.uid,
     });
     setContent("");
@@ -39,22 +41,36 @@ const Chat = () => {
   return (
     <>
       <Navbar />
-      <div className="chat">
-        {chats.map((chat) => {
-          return <p key={chat.timestamp}>{chat.content}</p>;
-        })}
-      </div>
-      <form onSubmit={handleSubmit}>
-        <input
-          onChange={(e) => setContent(e.target.value)}
-          value={content}
-          autoFocus
-        ></input>
-        <button>Post</button>
-      </form>
-      <div>
-        Logged in as: <strong>{user?.email}</strong>
-      </div>
+
+      <section className="chat">
+        <div className="chat__container">
+          <div className="chat__content">
+            {chats.map((chat, i) => {
+              return (
+                <ChatPost
+                  key={i}
+                  content={chat.content}
+                  createdAt={chat.createdAt}
+                  createdBy={chat.createdBy}
+                />
+              );
+            })}
+          </div>
+
+          <form onSubmit={handleSubmit}>
+            <input
+              onChange={(e) => setContent(e.target.value)}
+              value={content}
+              autoFocus
+            ></input>
+            <button>Post</button>
+          </form>
+
+          <div>
+            Logged in as: <strong>{user?.email}</strong>
+          </div>
+        </div>
+      </section>
     </>
   );
 };

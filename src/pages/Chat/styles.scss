@@ -1,0 +1,14 @@
+.chat {
+  padding: 2rem 1rem;
+  text-align: left;
+
+  &__container {
+    border: 1px solid black;
+  }
+
+  &__content {
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+  }
+}
