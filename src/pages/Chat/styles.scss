@@ -1,11 +1,22 @@
+@import "../../styles/global/mixins";
+
 .chat {
   padding: 2rem;
   text-align: left;
+
+  @include breakpoint(md) {
+    padding: 0;
+  }
 
   &__container {
     background-color: rgb(240, 240, 240);
     border-radius: 15px;
     padding: 1.25rem 2.5rem;
+
+    @include breakpoint(md) {
+      border-radius: 0;
+      padding: 1rem;
+    }
   }
 
   &__content {
