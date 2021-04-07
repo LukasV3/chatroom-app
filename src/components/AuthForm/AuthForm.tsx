@@ -17,7 +17,7 @@ interface Props {
 
 const AuthForm = ({ type, onSubmit }: Props) => {
   const [formValues, setFormValues] = useState({ name: "", email: "", password: "" });
-  const [error, setErrors] = useState(null);
+  const [error, setError] = useState<null | string>(null);
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormValues({
@@ -28,12 +28,17 @@ const AuthForm = ({ type, onSubmit }: Props) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setErrors(null);
+    setError(null);
+
+    if (type === "Sign Up" && formValues.name === "") {
+      return setError("Please enter your name.");
+    }
+
     console.log(`formValues`, formValues);
     try {
       await onSubmit(formValues);
     } catch (error) {
-      setErrors(error.message);
+      setError(error.message);
     }
   };
 
@@ -76,7 +81,14 @@ const AuthForm = ({ type, onSubmit }: Props) => {
             value={formValues.password}
             onChange={onInputChange}
           />
-          {error ? <p>{error}</p> : null}
+          {error && (
+            <div className="authform__form--error">
+              <p>
+                <i className="fas fa-exclamation-circle"></i>
+                <span>{error}</span>
+              </p>
+            </div>
+          )}
           <button className="btn btn--primary authform__form--btn">{type}</button>
         </form>
 
