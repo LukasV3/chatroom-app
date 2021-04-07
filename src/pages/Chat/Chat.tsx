@@ -31,7 +31,7 @@ const Chat = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (content === "") return;
+    if (!content) return;
 
     await db.ref("chats").push({
       content: content,
@@ -40,6 +40,8 @@ const Chat = () => {
       uid: user?.uid,
     });
     setContent("");
+
+    document.querySelector(".chat__form")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
