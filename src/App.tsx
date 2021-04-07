@@ -7,6 +7,7 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import Chat from "./pages/Chat/Chat";
+import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 import { auth } from "./services/firebase";
 
 type routeProps = {
@@ -60,7 +61,15 @@ const App = () => {
   });
 
   return isLoading ? (
-    <h2>Loading...</h2>
+    <LoadingSpinner
+      scale={1.4}
+      color="#000"
+      parentStyles={{
+        height: "100vh",
+        display: "grid",
+        placeItems: "center",
+      }}
+    />
   ) : (
     <Router history={history}>
       <Switch>
