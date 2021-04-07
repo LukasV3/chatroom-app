@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./styles.scss";
 import { auth, db } from "../../services/firebase";
-
 import Navbar from "../../components/Navbar/Navbar";
 import ChatPost from "../../components/ChatPost/ChatPost";
 
