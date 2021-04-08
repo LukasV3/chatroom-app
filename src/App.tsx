@@ -64,12 +64,14 @@ const App = () => {
     <LoadingSpinner />
   ) : (
     <Router history={history}>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <PrivateRoute path="/chat" authenticated={authenticated} component={Chat} />
-        <PublicRoute path="/login" authenticated={authenticated} component={Login} />
-        <PublicRoute path="/signup" authenticated={authenticated} component={SignUp} />
-      </Switch>
+      <div className="app-container">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <PrivateRoute path="/chat" authenticated={authenticated} component={Chat} />
+          <PublicRoute path="/login" authenticated={authenticated} component={Login} />
+          <PublicRoute path="/signup" authenticated={authenticated} component={SignUp} />
+        </Switch>
+      </div>
     </Router>
   );
 };

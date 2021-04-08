@@ -12,8 +12,8 @@ const ChatPost = ({ content, createdAt, createdBy }: Props) => {
   const renderCreatedAt = (date: string) => {
     const day = dateFormat(date, "DDDD");
     return day === "Today" || day === "Yesterday"
-      ? `${day} at ${dateFormat(date, "HH:MM TT")}`
-      : `${dateFormat(date, "d mmmm")} at ${dateFormat(date, "HH:MM TT")}`;
+      ? `${day} at ${dateFormat(date, "HH:MM")}`
+      : `${dateFormat(date, "d mmmm")} at ${dateFormat(date, "HH:MM")}`;
   };
 
   return (

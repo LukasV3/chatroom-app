@@ -5,6 +5,10 @@
   padding: 0 2.5rem;
   position: relative;
 
+  @include breakpoint(sm) {
+    padding: 0 1.5rem;
+  }
+
   &__nav {
     display: flex;
     justify-content: space-between;

@@ -75,9 +75,9 @@ const Chat = () => {
               <button className="chat__form--btn btn">Send</button>
             </form>
 
-            <div>
-              Logged in as: <strong>{user?.displayName}</strong> -{user?.email}
-            </div>
+            <p>
+              Logged in as: <strong>{user?.displayName}</strong> - {user?.email}
+            </p>
           </div>
         </section>
       )}
