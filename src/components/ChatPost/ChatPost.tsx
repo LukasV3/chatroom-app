@@ -6,9 +6,10 @@ type Props = {
   content: string;
   createdAt: string;
   createdBy: string;
+  color: string;
 };
 
-const ChatPost = ({ content, createdAt, createdBy }: Props) => {
+const ChatPost = ({ content, createdAt, createdBy, color }: Props) => {
   const renderCreatedAt = (date: string) => {
     const day = dateFormat(date, "DDDD");
     return day === "Today" || day === "Yesterday"
@@ -19,7 +20,7 @@ const ChatPost = ({ content, createdAt, createdBy }: Props) => {
   return (
     <div className="chat-post">
       <div className="chat-post__content">
-        <div className="chat-post__img">
+        <div className="chat-post__img" style={{ background: `${color}` }}>
           <p>{createdBy?.slice(0, 1).toUpperCase()}</p>
         </div>
         <h3 className="chat-post__title">

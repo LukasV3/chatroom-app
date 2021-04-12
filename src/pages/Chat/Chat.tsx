@@ -10,6 +10,7 @@ type ChatTypes = {
   content: string;
   uid: string;
   createdBy: string;
+  color: string;
 };
 
 const Chat = () => {
@@ -38,6 +39,7 @@ const Chat = () => {
       createdAt: Date.now(),
       createdBy: user?.displayName,
       uid: user?.uid,
+      color: user?.photoURL,
     });
     setContent("");
 
@@ -60,6 +62,7 @@ const Chat = () => {
                     content={chat.content}
                     createdAt={chat.createdAt}
                     createdBy={chat.createdBy}
+                    color={chat.color}
                   />
                 );
               })}

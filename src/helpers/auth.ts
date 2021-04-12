@@ -1,4 +1,5 @@
 import { auth } from "../services/firebase";
+import randomColor from "randomcolor";
 
 type authParams = {
   name?: string;
@@ -10,6 +11,7 @@ export const signup = async ({ name, email, password }: authParams) => {
   const userData = await auth().createUserWithEmailAndPassword(email, password);
   return await userData.user?.updateProfile({
     displayName: name,
+    photoURL: randomColor({ luminosity: "dark" }),
   });
 };
 
