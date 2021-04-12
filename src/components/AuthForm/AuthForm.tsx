@@ -34,7 +34,6 @@ const AuthForm = ({ type, onSubmit }: Props) => {
       return setError("Please enter your name.");
     }
 
-    console.log(`formValues`, formValues);
     try {
       await onSubmit(formValues);
     } catch (error) {
@@ -92,11 +91,12 @@ const AuthForm = ({ type, onSubmit }: Props) => {
           <button className="btn btn--primary authform__form--btn">{type}</button>
         </form>
 
-        {type === "Login" ? (
-          <Link to="/signup">Don't have an account?</Link>
-        ) : (
-          <Link to="/login">Already have an account?</Link>
-        )}
+        <Link
+          to={`/${type === "Login" ? "signup" : "login"}`}
+          className="btn btn--secondary"
+        >
+          {type === "Login" ? "Don't" : "Already"} have an account?
+        </Link>
       </div>
     </section>
   );

@@ -1,7 +1,9 @@
 @import "../../styles/global/mixins";
+@import "../../styles/global/variables";
 
 .navbar {
-  background-color: blueviolet;
+  background: $color-primary-dark;
+  background: $color-primary-gradient;
   padding: 0 2.5rem;
   position: relative;
 
@@ -19,8 +21,11 @@
   }
 
   &__logo {
+    font-size: 1.85rem;
+    letter-spacing: 0.05rem;
+
     & i {
-      margin-left: 0.5rem;
+      margin-left: 0.75rem;
     }
   }
 
@@ -29,10 +34,11 @@
     grid-template-columns: repeat(2, auto);
     column-gap: 0.25rem;
     list-style: none;
-    background-color: blueviolet;
+    background: transparent;
     transition: 0.33s ease;
 
     @include breakpoint(sm) {
+      background: $color-primary-gradient;
       position: absolute;
       width: 100%;
       top: 5rem;
@@ -60,6 +66,8 @@
   &__link {
     text-decoration: none;
     color: #000;
+    font-weight: 500;
+    font-size: 1.2rem;
     padding: 0.5rem 1rem;
     border-radius: 10px;
     cursor: pointer;
@@ -72,7 +80,7 @@
     }
 
     &:hover {
-      text-decoration: underline;
+      color: #fff;
     }
   }
 }

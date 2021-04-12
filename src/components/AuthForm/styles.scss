@@ -17,10 +17,6 @@
     margin-bottom: 1.5rem;
   }
 
-  & a {
-    color: #000;
-  }
-
   &__form {
     display: flex;
     flex-direction: column;
@@ -42,10 +38,6 @@
       font-size: 1rem;
       border: none;
       margin: 0.5rem 0 2.5rem;
-
-      &:hover {
-        text-decoration: underline;
-      }
     }
 
     &--error {

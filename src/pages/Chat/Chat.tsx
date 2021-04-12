@@ -72,7 +72,7 @@ const Chat = () => {
                 autoFocus
                 className="chat__form--input"
               ></input>
-              <button className="chat__form--btn btn">Send</button>
+              <button className="btn btn--primary chat__form--btn">Send</button>
             </form>
 
             <p>

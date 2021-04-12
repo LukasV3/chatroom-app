@@ -15,14 +15,31 @@ section {
   border-radius: 5px;
   cursor: pointer;
   color: #000;
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  transition: color 0.15s ease;
 }
 
 .btn--primary {
-  background-color: rgb(95, 167, 255);
+  background: $color-primary-light;
+
+  &:hover {
+    color: #fff;
+    background: $color-primary-gradient;
+  }
 }
 
 .btn--secondary {
-  background-color: #fff;
+  background: #fff;
+
+  &:active {
+    color: $color-primary-light;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .app-container {
