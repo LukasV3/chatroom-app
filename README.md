@@ -15,3 +15,5 @@ To explore the live app visit: [https://practical-engelbart-e97075.netlify.app/]
 - React
   - React Router
 - Firebase
+
+Be on the look out because I'm constantly adding new features!
