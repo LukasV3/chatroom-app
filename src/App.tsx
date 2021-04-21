@@ -7,6 +7,7 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import Chat from "./pages/Chat/Chat";
+import Profile from "./pages/Profile/Profile";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 import { auth } from "./services/firebase";
 
@@ -68,6 +69,11 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <PrivateRoute path="/chat" authenticated={authenticated} component={Chat} />
+          <PrivateRoute
+            path="/profile"
+            authenticated={authenticated}
+            component={Profile}
+          />
           <PublicRoute path="/login" authenticated={authenticated} component={Login} />
           <PublicRoute path="/signup" authenticated={authenticated} component={SignUp} />
         </Switch>

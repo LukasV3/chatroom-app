@@ -24,11 +24,18 @@ const Navbar = ({ authenticated }: Props) => {
 
         <ul className={clicked ? "navbar__links links--active" : "navbar__links"}>
           {authenticated ? (
-            <li className="navbar__item">
-              <Link to="/" className="navbar__link" onClick={() => auth().signOut()}>
-                Log Out
-              </Link>
-            </li>
+            <>
+              <li className="navbar__item">
+                <Link to="/profile" className="navbar__link">
+                  Profile
+                </Link>
+              </li>
+              <li className="navbar__item">
+                <Link to="/" className="navbar__link" onClick={() => auth().signOut()}>
+                  Log Out
+                </Link>
+              </li>
+            </>
           ) : (
             <>
               <li className="navbar__item">
