@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./styles.scss";
 import { Link } from "react-router-dom";
 import { auth } from "../../services/firebase";
+import history from "../../helpers/history";
 
 type Props = {
   authenticated: boolean;
@@ -13,7 +14,10 @@ const Navbar = ({ authenticated }: Props) => {
   return (
     <div className="navbar">
       <nav className="navbar__nav">
-        <h1 className="navbar__logo">
+        <h1
+          className="navbar__logo"
+          onClick={() => authenticated && history.push("/chat")}
+        >
           Chatroom
           <i className="fab fa-rocketchat"></i>
         </h1>
