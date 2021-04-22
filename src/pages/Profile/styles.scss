@@ -1,5 +1,45 @@
 .profile {
+  padding: 4rem 1rem;
+
   &__content {
-    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 3rem;
+    margin-bottom: 2.25rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 25rem;
+
+    &-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    & input {
+      width: 100%;
+      font-size: 1rem;
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid grey;
+      margin-left: 1rem;
+    }
+
+    &--btn {
+      width: 8.5rem;
+      padding: 0.5rem 0;
+      font-size: 1rem;
+      border: none;
+      margin: 0.5rem 0 2.5rem;
+    }
   }
 }
